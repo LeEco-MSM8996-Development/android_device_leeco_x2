@@ -51,7 +51,7 @@ char const*const BLUE_LED_FILE
         = "/sys/class/leds/blue/brightness";
 
 char const*const LCD_FILE
-        = "/sys/class/leds/lcd-backlight/brightness";
+        = "/sys/class/leds/wled/brightness";
 
 const char*const BUTTONS_FILE
         = "/sys/class/leds/button-backlight/brightness";
@@ -189,11 +189,12 @@ set_light_backlight(struct light_device_t* dev,
 {
     int err = 0;
     int brightness = rgb_to_brightness(state);
+	int brightness2 = brightness * 16;
     if(!dev) {
         return -1;
     }
     pthread_mutex_lock(&g_lock);
-    err = write_int(LCD_FILE, brightness);
+    err = write_int(LCD_FILE, brightness2);
     pthread_mutex_unlock(&g_lock);
     return err;
 }
@@ -286,7 +287,7 @@ set_speaker_light_locked(struct light_device_t* dev,
 
         // red
         write_int(RED_START_IDX_FILE, 0);
-        duty = get_scaled_duty_pcts(red);    
+        duty = get_scaled_duty_pcts(red);
         write_str(RED_DUTY_PCTS_FILE, duty);
         write_int(RED_PAUSE_LO_FILE, offMS);
         // The led driver is configured to ramp up then ramp

@@ -12,34 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Inherit from those products. Most specific first.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-
-# Inherit from oneplus3 device
-$(call inherit-product, device/oneplus/oneplus3/device.mk)
-
-# Enhanced NFC
-$(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
+$(call inherit-product, device/letv/le_x2/full_le_x2.mk)
 
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
-PRODUCT_NAME := cm_oneplus3
-PRODUCT_DEVICE := oneplus3
-PRODUCT_MANUFACTURER := OnePlus
-PRODUCT_BRAND := OnePlus
+PRODUCT_NAME := cm_le_x2
+BOARD_VENDOR := letv
+TARGET_VENDOR := letv
 
-PRODUCT_GMS_CLIENTID_BASE := android-oneplus
+PRODUCT_GMS_CLIENTID_BASE := android-letv
 
-TARGET_VENDOR_PRODUCT_NAME := OnePlus3
-TARGET_VENDOR_DEVICE_NAME := OnePlus3
-PRODUCT_BUILD_PROP_OVERRIDES += TARGET_DEVICE=OnePlus3 PRODUCT_NAME=OnePlus3
+TARGET_VENDOR_PRODUCT_NAME := LeMax2_CN
+TARGET_VENDOR_DEVICE_NAME := le_x2
+PRODUCT_BUILD_PROP_OVERRIDES += TARGET_DEVICE=le_x2 PRODUCT_NAME=LeMax2_CN
 
+## Use the latest approved GMS identifiers unless running a signed build
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BUILD_FINGERPRINT=OnePlus/OnePlus3/OnePlus3:6.0.1/MMB29M/288360:user/release-keys \
-    PRIVATE_BUILD_DESC="OnePlus3-user 6.0.1 MMB29M 32 dev-keys"
-
-PRODUCT_SYSTEM_PROPERTY_BLACKLIST += ro.product.model
-
-TARGET_VENDOR := oneplus
+    BUILD_FINGERPRINT=LeEco/LeMax2_CN/le_x2:6.0.1/FEXCNFN5801507014S/letv07012213:user/release-keys \
+    PRIVATE_BUILD_DESC="le_x2-user 6.0.1 FEXCNFN5801507014S eng.letv.20160701.221015 release-keys"
