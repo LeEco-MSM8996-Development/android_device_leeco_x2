@@ -2,11 +2,11 @@
 /system         ext4    /dev/block/bootdevice/by-name/system
 /system_image   emmc    /dev/block/bootdevice/by-name/system    flags=flashimg=1
 /cache          ext4    /dev/block/bootdevice/by-name/cache
-/data		        ext4	  /dev/block/bootdevice/by-name/userdata	flags=encryptable=/dev/block/bootdevice/by-name/modem	 
+/data		ext4	/dev/block/bootdevice/by-name/userdata	flags=encryptable=/dev/block/bootdevice/by-name/modem	 
 /boot           emmc    /dev/block/bootdevice/by-name/boot
 /recovery       emmc    /dev/block/bootdevice/by-name/recovery  flags=backup=1
 /misc           emmc    /dev/block/bootdevice/by-name/misc
 /firmware       vfat    /dev/block/bootdevice/by-name/modem     flags=display="Firmware";mounttodecrypt
 
 # Removable storage
-/usb_otg	      vfat	/dev/block/sda1				    /dev/block/sda	    flags=storage;wipeingui;removable
+/usb_otg vfat /dev/block/sda1 /dev/block/sda flags=storage;wipeingui;removable
