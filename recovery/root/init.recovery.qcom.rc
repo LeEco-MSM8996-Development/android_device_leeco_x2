@@ -25,8 +25,11 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-on property:ro.crypto.state=encrypted
-    start sbinqseecomd
+on init
+    chmod 0660 /dev/qseecom
+    chown system drmrpc /dev/qseecom
+    chmod 0664 /dev/ion
+    chown system system /dev/ion
 
 # Separate copy needed to use /sbin/linker64 instead of /system/bin/linker64
 service sbinqseecomd /sbin/qseecomd
@@ -35,3 +38,6 @@ service sbinqseecomd /sbin/qseecomd
     user root
     group root
     seclabel u:r:recovery:s0
+
+on property:ro.crypto.state=encrypted
+    start sbinqseecomd
