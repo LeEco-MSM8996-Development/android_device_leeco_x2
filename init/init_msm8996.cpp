@@ -124,10 +124,6 @@ void vendor_load_properties() {
     char rf_version[PROP_VALUE_MAX];
     int rc;
 
-    rc = property_get("ro.cm.device", device);
-    if (!rc || strncmp(device, "le_x2", PROP_VALUE_MAX))
-        return;
-    property_set("ro.config.product", "le_x2");
     init_alarm_boot_properties();
 }
 
