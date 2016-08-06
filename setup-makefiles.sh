@@ -100,8 +100,9 @@ PRODUCT_PACKAGES += \\
     libthermalclient
 
 PRODUCT_PACKAGES += \\
-    qdcm_calib_data_samsung_s6e3fa3_1080p_cmd_mode_dsi_panel \\
-    qdcm_calib_data_samsung_s6e3fa3_1080p_video_mode_dsi_panel
+    qdcm_calib_data_le_x2_mdss_dsi_sharp_qhd_dualdsi_cmd \\
+    qdcm_calib_data_le_x2_mdss_dsi_truly_qhd_dualdsi_cmd_pvt \\
+    qdcm_calib_data_mdss_dsi_sharp_qhd_dualdsi_cmd
 
 \$(call inherit-product, vendor/$VENDOR/$DEVICE/$DEVICE-vendor-blobs.mk)
 EOF
@@ -474,17 +475,24 @@ LOCAL_PROPRIETARY_MODULE := true
 include \$(BUILD_PREBUILT)
 
 include \$(CLEAR_VARS)
-LOCAL_MODULE       := qdcm_calib_data_samsung_s6e3fa3_1080p_cmd_mode_dsi_panel.xml
+LOCAL_MODULE       := qdcm_calib_data_le_x2_mdss_dsi_sharp_qhd_dualdsi_cmd.xml
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := proprietary/etc/qdcm_calib_data_samsung_s6e3fa3_1080p_cmd_mode_dsi_panel.xml
+LOCAL_SRC_FILES    := proprietary/etc/qdcm_calib_data_le_x2_mdss_dsi_sharp_qhd_dualdsi_cmd.xml
 include \$(BUILD_PREBUILT)
 
 include \$(CLEAR_VARS)
-LOCAL_MODULE       := qdcm_calib_data_samsung_s6e3fa3_1080p_video_mode_dsi_panel.xml
+LOCAL_MODULE       := qdcm_calib_data_le_x2_mdss_dsi_truly_qhd_dualdsi_cmd_pvt
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := proprietary/etc/qdcm_calib_data_samsung_s6e3fa3_1080p_video_mode_dsi_panel.xml
+LOCAL_SRC_FILES    := proprietary/etc/qdcm_calib_data_le_x2_mdss_dsi_truly_qhd_dualdsi_cmd_pvt.xml
+include \$(BUILD_PREBUILT)
+
+include \$(CLEAR_VARS)
+LOCAL_MODULE       := qdcm_calib_data_mdss_dsi_sharp_qhd_dualdsi_cmd
+LOCAL_MODULE_TAGS  := optional
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := proprietary/etc/qdcm_calib_data_mdss_dsi_sharp_qhd_dualdsi_cmd.xml
 include \$(BUILD_PREBUILT)
 
 \$(shell mkdir -p \$(PRODUCT_OUT)/system/vendor/lib/egl && pushd \$(PRODUCT_OUT)/system/vendor/lib > /dev/null && ln -s egl/libEGL_adreno.so libEGL_adreno.so && popd > /dev/null)
