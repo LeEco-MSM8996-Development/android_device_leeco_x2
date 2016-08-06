@@ -312,6 +312,16 @@ PRODUCT_PACKAGES += \
     wpa_supplicant.conf
 
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/acdbdata/MTP/letv/MTP_Bluetooth_cal.acdb:system/configs/acdbdata/MTP/letv/MTP_Bluetooth_cal.acdb \
+    $(LOCAL_PATH)/configs/acdbdata/MTP/letv/MTP_General_cal.acdb:system/configs/acdbdata/MTP/letv/MTP_General_cal.acdb \
+    $(LOCAL_PATH)/configs/acdbdata/MTP/letv/MTP_Global_cal.acdb:system/configs/acdbdata/MTP/letv/MTP_Global_cal.acdb \
+    $(LOCAL_PATH)/configs/acdbdata/MTP/letv/MTP_Handset_cal.acdb:system/configs/acdbdata/MTP/letv/MTP_Handset_cal.acdb \
+    $(LOCAL_PATH)/configs/acdbdata/MTP/letv/MTP_Hdmi_cal.acdb:system/configs/acdbdata/MTP/letv/MTP_Hdmi_cal.acdb \
+    $(LOCAL_PATH)/configs/acdbdata/MTP/letv/MTP_Headset_cal.acdb:system/configs/acdbdata/MTP/letv/MTP_Headset_cal.acdb \
+    $(LOCAL_PATH)/configs/acdbdata/MTP/letv/MTP_Speaker_cal.acdb:system/configs/acdbdata/MTP/letv/MTP_Speaker_cal.acdb \
+    $(LOCAL_PATH)/configs/acdbdata/MTP/letv/workspaceFile.qwsp:system/configs/acdbdata/MTP/letv/workspaceFile.qwsp
+
+PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/hostapd.accept:system/etc/hostapd/hostapd.accept \
     $(LOCAL_PATH)/configs/hostapd.conf:system/etc/hostapd/hostapd_default.conf \
     $(LOCAL_PATH)/configs/hostapd.deny:system/etc/hostapd/hostapd.deny \
