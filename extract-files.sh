@@ -1,8 +1,8 @@
 #!/bin/bash
 
 set -e
-export DEVICE=oneplus3
-export VENDOR=oneplus
+export DEVICE=x2
+export VENDOR=leeco
 
 if [ $# -eq 0 ]; then
   SRC=adb
