@@ -13,13 +13,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-TARGET_OTA_ASSERT_DEVICE := le_x2,LeMax2_CN,
+#
+# This file sets variables that control the way modules are built		
+# thorughout the system. It should not be used to conditionally		
+# disable makefiles (the proper mechanism to control what gets		
+# included in a build is to use PRODUCT_PACKAGES in a product		
+# definition file).		
+#
 
-DEVICE_PATH := device/letv/le_x2
+TARGET_OTA_ASSERT_DEVICE := le_x2,LeMax2_CN,LeMax2_NA
+
+DEVICE_PATH := device/leeco/x2
 
 TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
 
-BOARD_VENDOR := letv
+BOARD_VENDOR := leeco
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := msm8996
@@ -41,6 +49,8 @@ TARGET_2ND_ARCH_VARIANT := armv7-a-neon
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
+
+ENABLE_CPUSETS := true
 
 TARGET_USES_64_BIT_BINDER := true
 
@@ -65,10 +75,7 @@ BOARD_USES_QCOM_HARDWARE := true
 BOARD_ANT_WIRELESS_DEVICE := "qualcomm-uart"
 
 # Audio
-#AUDIO_FEATURE_ENABLED_AAC_ADTS_OFFLOAD := true
 AUDIO_FEATURE_ENABLED_ACDB_LICENSE := true
-#AUDIO_FEATURE_ENABLED_APE_OFFLOAD := true
-#AUDIO_FEATURE_ENABLED_ALAC_OFFLOAD := true
 AUDIO_FEATURE_ENABLED_ANC_HEADSET := true
 AUDIO_FEATURE_ENABLED_AUDIOSPHERE := true
 AUDIO_FEATURE_ENABLED_COMPRESS_VOIP := true
@@ -83,8 +90,6 @@ AUDIO_FEATURE_ENABLED_NT_PAUSE_TIMEOUT := true
 AUDIO_FEATURE_ENABLED_PCM_OFFLOAD := true
 AUDIO_FEATURE_ENABLED_PCM_OFFLOAD_24 := true
 AUDIO_FEATURE_ENABLED_PROXY_DEVICE := true
-#AUDIO_FEATURE_ENABLED_VORBIS_OFFLOAD := true
-#AUDIO_FEATURE_ENABLED_WMA_OFFLOAD := true
 
 AUDIO_USE_LL_AS_PRIMARY_OUTPUT := true
 BOARD_USES_ALSA_AUDIO := true
@@ -107,10 +112,6 @@ BOARD_CHARGER_DISABLE_INIT_BLANK := true
 BOARD_HEALTHD_CUSTOM_CHARGER_RES := $(DEVICE_PATH)/charger/images
 BOARD_HAL_STATIC_LIBRARIES += libhealthd.msm8996
 
-# CM Hardware
-BOARD_HARDWARE_CLASS += $(DEVICE_PATH)/cmhw
-#TARGET_TAP_TO_WAKE_NODE := "/sys/devices/soc/75ba000.i2c/i2c-12/12-004b/input/input2/wake_gesture"
-
 # CNE and DPM
 TARGET_LDPRELOAD := libNimsWrap.so
 BOARD_USES_QCNE := true
@@ -129,15 +130,6 @@ MAX_EGL_CACHE_SIZE := 2048*1024
 OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
 MAX_VIRTUAL_DISPLAY_DIMENSION := 4096
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
-
-# Enable dexpreopt to speed boot time
-ifeq ($(HOST_OS),linux)
-  ifeq ($(call match-word-in-list,$(TARGET_BUILD_VARIANT),user),true)
-    ifeq ($(WITH_DEXPREOPT),)
-      WITH_DEXPREOPT := true
-    endif
-  endif
-endif
 
 # GPS
 TARGET_NO_RPC := true
@@ -171,21 +163,6 @@ BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 # RIL
 TARGET_RIL_VARIANT := caf
 
-# Recovery
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/recovery.fstab
-#RECOVERY_VARIANT := twrp
-ifeq ($(RECOVERY_VARIANT),twrp)
-BOARD_HAS_NO_REAL_SDCARD := true
-DEVICE_RESOLUTION := 1080x1920
-RECOVERY_GRAPHICS_FORCE_USE_LINELENGTH := true
-RECOVERY_SDCARD_ON_DATA := true
-TARGET_RECOVERY_QCOM_RTC_FIX := true
-TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
-TW_EXTRA_LANGUAGES := true
-TW_INCLUDE_CRYPTO := true
-TW_NEW_ION_HEAP := true
-endif
-
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
@@ -215,4 +192,4 @@ WIFI_DRIVER_FW_PATH_AP  := "ap"
 WIFI_DRIVER_FW_PATH_P2P := "p2p"
 
 # inherit from the proprietary version
--include vendor/letv/le_x2/BoardConfigVendor.mk
+-include vendor/leeco/x2/BoardConfigVendor.mk
