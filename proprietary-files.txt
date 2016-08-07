@@ -49,7 +49,6 @@ vendor/lib/libmmcamera_sony_imx230_plus_eeprom.so
 vendor/lib/libmmcamera_ov8865.so
 vendor/lib/libmmcamera_ov8865_eeprom.so
 vendor/lib/libmmcamera_ov8865_ofilm.so
-vendor/lib/libmmcamera_stillmore_lib.so
 vendor/lib/libmmcamera_thread_services.so
 vendor/lib/libmmcamera_tintless_algo.so
 vendor/lib/libmmcamera_tintless_bg_pca_algo.so
@@ -253,7 +252,7 @@ vendor/lib/libmmcamera_isp_sub_module.so
 
 # Fingerprint sensor
 bin/qfp-daemon
-lib64/hw/fingerprint.msm8996.so
+vendor/lib64/hw/fingerprint.msm8996.so
 vendor/lib64/libqfp-service.so
 vendor/lib64/qfp.wakeup.so
 
