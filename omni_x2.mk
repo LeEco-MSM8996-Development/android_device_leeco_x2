@@ -28,7 +28,7 @@ PRODUCT_COPY_FILES += \
     bionic/libc/zoneinfo/tzdata:recovery/root/system/usr/share/zoneinfo/tzdata
 
 PRODUCT_NAME := omni_x2
-PRODUCT_DEVICE := x2
+PRODUCT_DEVICE := le_x2
 PRODUCT_BRAND := leeco
-PRODUCT_MODEL := x2
+PRODUCT_MODEL := le_x2
 PRODUCT_MANUFACTURER := leeco
