@@ -89,7 +89,7 @@ ro.vendor.gt_library=libqti-gt.so
 ro.vendor.at_library=libqti-at.so
 sys.games.gt.prof=1
 ro.min_freq_0=307200
-ro.min_freq_2=307200
+ro.min_freq_4=307200
 ro.sys.fw.bg_apps_limit=60
 
 # QCOM
