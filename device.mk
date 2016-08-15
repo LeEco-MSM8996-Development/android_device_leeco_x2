@@ -143,11 +143,7 @@ PRODUCT_PACKAGES += \
 
 # Yep
 PRODUCT_PACKAGES += \
-    libminui \
-
-# Charger
-PRODUCT_PACKAGES += \
-    charger_res_images
+    libminui
 
 # Connectivity Engine support (CNE)
 PRODUCT_PACKAGES += \
