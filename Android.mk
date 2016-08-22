@@ -29,6 +29,18 @@ ifeq ($(TARGET_DEVICE),x2)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
 
+#
+# Prebuilt kernel for now
+#
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/kernel
+endif
+
+file := $(INSTALLED_KERNEL_TARGET)
+ALL_PREBUILT += $(file)
+$(file): $(TARGET_PREBUILT_KERNEL) | $(ACP)
+	$(transform-prebuilt-to-target)
+
 IMS_LIBS := libimscamera_jni.so libimsmedia_jni.so
 
 IMS_SYMLINKS := $(addprefix $(TARGET_OUT)/app/ims/lib/arm64/,$(notdir $(IMS_LIBS)))
@@ -54,5 +66,7 @@ $(shell mkdir -p $(TARGET_OUT)/lib/modules; \
         $(TARGET_OUT)/lib/modules/wlan.ko)
 
 include device/leeco/x2/tftp.mk
+
+include device/leeco/x2/kernel/AndroidKernel.mk
 
 endif

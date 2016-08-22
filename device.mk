@@ -15,11 +15,11 @@
 #
 
 #
-# This file sets variables that control the way modules are built		
+# This file sets variables that control the way modules are built
 # thorughout the system. It should not be used to conditionally
-# disable makefiles (the proper mechanism to control what gets		
-# included in a build is to use PRODUCT_PACKAGES in a product		
-# definition file).		
+# disable makefiles (the proper mechanism to control what gets
+# included in a build is to use PRODUCT_PACKAGES in a product
+# definition file).
 #
 
 $(call inherit-product-if-exists, vendor/leeco/x2/x2-vendor.mk)
@@ -66,10 +66,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxxhdpi
 
-# Boot animation
-TARGET_SCREEN_HEIGHT := 2560
-TARGET_SCREEN_WIDTH := 1440
-
+# Overrides
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapstartsize=8m \
     dalvik.vm.heapgrowthlimit=256m \
@@ -138,7 +135,7 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    Snap \
+    SnapdragonCamera \
     libxml2
 
 # Yep
@@ -170,8 +167,8 @@ PRODUCT_PACKAGES += \
     fingerprintd
 
 # Gello
-PRODUCT_PACKAGES += \
-    Gello
+# PRODUCT_PACKAGES += \
+#     Gello
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -259,9 +256,6 @@ PRODUCT_PACKAGES += \
 
 # Wifi
 PRODUCT_PACKAGES += \
-    ipacm \
-    ipacm-diag \
-    IPACM_cfg.xml \
     libqsap_sdk \
     libQWiFiSoftApCfg \
     libwpa_client \
@@ -297,7 +291,7 @@ PRODUCT_COPY_FILES += \
 # misc
 PRODUCT_PROPERTY_OVERRIDES += \
     sys.hallsensor.enable=1
-    
+
 # Reduce client buffer size for fast audio output tracks
 PRODUCT_PROPERTY_OVERRIDES += \
     af.fast_track_multiplier=2

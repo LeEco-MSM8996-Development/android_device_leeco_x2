@@ -14,14 +14,14 @@
 # limitations under the License.
 
 #
-# This file sets variables that control the way modules are built		
-# thorughout the system. It should not be used to conditionally		
-# disable makefiles (the proper mechanism to control what gets		
-# included in a build is to use PRODUCT_PACKAGES in a product		
-# definition file).		
+# This file sets variables that control the way modules are built
+# thorughout the system. It should not be used to conditionally
+# disable makefiles (the proper mechanism to control what gets
+# included in a build is to use PRODUCT_PACKAGES in a product
+# definition file).
 #
 
-TARGET_OTA_ASSERT_DEVICE := le_x2,LeMax2_CN,LeMax2_NA
+TARGET_OTA_ASSERT_DEVICE := le_x2,LeMax2_CN,LeMax2_NA,x2
 
 DEVICE_PATH := device/leeco/x2
 
@@ -58,15 +58,14 @@ TARGET_USES_64_BIT_BINDER := true
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=16M@0-0xffffffff androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 4096
-BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_RAMDISK_OFFSET := 0x01000000
-BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
-TARGET_KERNEL_APPEND_DTB := true
+BOARD_KERNEL_IMAGE_NAME := zImage
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_KERNEL_SOURCE := kernel/leeco/msm8996
-TARGET_KERNEL_CONFIG := cyanogenmod_x2_defconfig
+BOARD_MKBOOTIMG_ARGS := --tags_offset 0x00000100
+TARGET_KERNEL_SOURCE := $(DEVICE_PATH)/kernel
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
+TARGET_USES_UNCOMPRESSED_KERNEL := false
 
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
@@ -146,10 +145,10 @@ TARGET_PROVIDES_KEYMASTER := true
 TARGET_PROVIDES_LIBLIGHT := true
 
 # Recovery
-TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/rootdir/etc/fstab.qcom
-TARGET_RECOVERY_UI_LIB := librecovery_ui_msm
-TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_msm
-TARGET_RELEASETOOLS_EXTENSIONS := device/qcom/common
+TARGET_RECOVERY_FSTAB := device/leeco/x2/rootdir/etc/fstab.qcom
+# TARGET_RECOVERY_UI_LIB := librecovery_ui_msm
+# TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_msm
+# TARGET_RELEASETOOLS_EXTENSIONS := device/qcom/common
 BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
